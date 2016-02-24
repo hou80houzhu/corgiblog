@@ -287,7 +287,8 @@ p {
   margin: 0 auto; }
   .list .list-con {
     border-bottom: 1px solid #D7D7D7;
-    padding: 50px 0 50px 0; }
+    padding: 50px 0 50px 0;
+    position: relative; }
     .list .list-con .list-con-title {
       font-size: 22px;
       font-weight: 400; }
@@ -295,6 +296,14 @@ p {
       margin: 20px 0 20px; }
     .list .list-con .list-con-time {
       padding: 15px 0 0 0; }
+    .list .list-con .list-con-remove {
+      width: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 18px;
+      position: absolute;
+      top: 45px;
+      right: 10px; }
   .list .articlelist-head {
     line-height: 40px;
     border-bottom: 1px solid #D7D7D7; }
@@ -559,8 +568,7 @@ p {
   .editarticle .editarticle-con .editarticle-con-input input, .editarticle .editarticle-con .editarticle-con-input textarea {
     width: 100%;
     -webkit-box-sizing: border-box;
-    line-height: 30px;
-    padding: 0 5px 0 5px;
+    padding: 8px 5px 8px 5px;
     border: 1px solid #D7D7D7;
     -webkit-border-radius: 5px;
     outline: none;

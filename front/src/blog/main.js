@@ -213,6 +213,11 @@ Module({
     template: module.getTemplate("@tmp", "articlelist"),
     init: function () {
         this.render();
+        this.getData();
+        this.data={
+            list:[]
+        };
+        this.observe("data", this.data);
     },
     find_add: function (dom) {
         var ths = this;
@@ -232,6 +237,31 @@ Module({
                 e.preventDefault();
             });
         });
+    },
+    getData: function () {
+        var ths=this;
+        this.postRequest(basePath + "admin/api/articlelist").data(function (data) {
+            data.forEach(function(a){
+                ths.data.list.push(a);
+            });
+        });
+    },
+    group_item: function (dom) {
+        var ths=this;
+        dom.items("remove").click(function () {
+            var t=$(this).group().cache();
+            ths.postRequest(basePath+"admin/api/removearticle",{id:t.id}).data(function(){
+                t.remove();
+            });
+        });
+    },
+    "data_list_add":function(data){
+        $.template(module.getTemplate("@tmp", "articlelistitem")).renderAppendTo(this.finders("con"),data.value);
+        this.delegate();
+    },
+    "data_list_remove":function(e){
+        this.groups().eq(e.value[0].getIndex()).remove();
+        this.delegate();
     }
 });
 Module({

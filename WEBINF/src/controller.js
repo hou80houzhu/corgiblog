@@ -67,6 +67,13 @@ Module({
         }.bind(this)).fail(function () {
             done(this.error());
         }.bind(this));
+    },
+    "/removearticle":function(done){
+        this.dao.remove(this.getTable("articles").with(this.request)).done(function () {
+            done(this.success());
+        }.bind(this)).fail(function () {
+            done(this.error());
+        }.bind(this));
     }
 });
 Module({

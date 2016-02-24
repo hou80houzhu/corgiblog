@@ -80,13 +80,13 @@
 <div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
 <!--[listitem]-->
 <div>
-<%for(var i in data){%>
+    <%for(var i in data){%>
     <div class="list-con">
         <div class="list-con-title"><a href="detail?id=<%=data[i].id;%>"><%=data[i].title;%></a></div>
         <div class="list-con-desc"><%=data[i].descs||"no description";%></div>
         <div class="list-con-time">16 05 12</div>
     </div>
-<%}%>
+    <%}%>
 </div>
 <!--[copyright]-->
 <div class="copyright">All content copyright David García © 2015 • All rights reserved.</div>
@@ -156,31 +156,15 @@
 <div class="articlelist-head">
     <div class="atticlelist-head-btn" data-find="add" href="admin/addarticle"><i class="fa fa-circle-plus"></i> Add Article</div>
 </div>
-<div class="articlelist-list">
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
-        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+<div class="articlelist-list" data-find="con"></div>
+<div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
+<!--[articlelistitem]-->
+<div>
+    <div class="list-con" data-group="item" @cache(data)>
+         <div class="list-con-title"><a href="detail?id=<%=data.id;%>"><%=data.title;%></a></div>
+        <div class="list-con-desc"><%=data.descs||"no description";%></div>
         <div class="list-con-time">16 05 12</div>
-    </div>
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
-        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
-        <div class="list-con-time">16 05 12</div>
-    </div>
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
-        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
-        <div class="list-con-time">16 05 12</div>
-    </div>
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
-        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
-        <div class="list-con-time">16 05 12</div>
-    </div>
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
-        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
-        <div class="list-con-time">16 05 12</div>
+        <div class="list-con-remove" data-groupi="remove"><i class="fa fa-circle-cross"></i></div>
     </div>
 </div>
 <!--[editarticle]-->
