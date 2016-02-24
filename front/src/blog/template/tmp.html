@@ -1,0 +1,202 @@
+<!--[page]-->
+<%for(var i in option.modules){%>
+<%console.log(option.modules[i]);%>
+<@module type="{{option.modules[i].type}}" option="{{option.modules[i].option}}"/>
+<%}%>
+<!--[base]-->
+<div class="base-header">
+    <div class="base-header-bg" data-find="bg"></div>
+    <div class="base-header-icon">
+        <div class="base-header-iconimg"><img src="blog/style/images/logo.png"></div>
+    </div>
+    <div class="base-header-desc">
+        <div class="base-header-desc-a">hou80houzhu`s developworks</div>
+        <div class="base-header-desc-b">Mars Studio designs & develops digital products. We craft awesome and cool stuff.</div>
+    </div>
+    <div class="base-header-contact">
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-weixin"></i></a>
+    </div>
+    <div class="base-header-projects">
+        <div class="base-header-projects-a">my projects</div>
+        <div class="base-header-projects-b">Mars Studio designs & develops digital products.</div>
+        <div class="row mid-fix on480-row-2col on768-row-3col">
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/axesjs.png">
+                    <div class="base-header-projects-item-tip">AxesJS</div>
+                    <div class="base-header-projects-item-name">AxesJS</div>
+                </a>
+            </div>
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/axesbuilder.png">
+                    <div class="base-header-projects-item-tip">AxesBuilder</div>
+                    <div class="base-header-projects-item-name">AxesBuilder</div>
+                </a>
+            </div>
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/axestoolkit.png">
+                    <div class="base-header-projects-item-tip">AxesToolkit</div>
+                    <div class="base-header-projects-item-name">AxesToolkit</div>
+                </a>
+            </div>
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/corgiserver.png">
+                    <div class="base-header-projects-item-tip">corgiserver</div>
+                    <div class="base-header-projects-item-name">corgiserver</div>
+                </a>
+            </div>
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/pagemaker.png">
+                    <div class="base-header-projects-item-tip">PageMaker</div>
+                    <div class="base-header-projects-item-name">corgiserver</div>
+                </a>
+            </div>
+            <div class="span1-6">
+                <a class="base-header-projects-item" href="#">
+                    <img src="blog/style/images/dashboard.png">
+                    <div class="base-header-projects-item-tip">DashBoard</div>
+                    <div class="base-header-projects-item-name">DashBoard</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="logic">
+        <div class="logic-icon" data-find="icon"><img src="blog/style/images/logo.png"></div>
+    </div>
+    <div class="logicbtm">
+        <div class="logic-btn"><i class="fa fa-home"></i></div>
+        <div class="logic-btn"><i class="fa fa-twitter"></i></div>
+        <div class="logic-btn"><i class="fa fa-github"></i></div>
+    </div>
+</div>
+<!--[list]-->
+<div class="list-container" data-find="container"></div>
+<div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
+<!--[listitem]-->
+<div>
+<%for(var i in data){%>
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail?id=<%=data[i].id;%>"><%=data[i].title;%></a></div>
+        <div class="list-con-desc"><%=data[i].descs||"no description";%></div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+<%}%>
+</div>
+<!--[copyright]-->
+<div class="copyright">All content copyright David García © 2015 • All rights reserved.</div>
+<!--[papercontent]-->
+<div class="papercontent-con" data-find="con"></div>
+<!--[paperheader]-->
+<div class="paperheader-bg" data-find="bg"></div>
+<div class="paperheader-content">
+    <div class="paperheader-content-con">
+        <div class="paperheader-content-title" data-find="title">Sticky Post with a Featured Image</div>
+        <div class="paperheader-content-desc">
+            <div class="paperheader-content-desc-author">
+                <div class="paperheader-content-desc-author-icon"><img src="blog/style/images/logo.png"></div>
+                <span class="paperheader-content-desc-author-name">Hou80houzhu</span>
+                <span class="paperheader-content-desc-author-time" data-find="time">06 05 03</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="paperheader-arrow" data-find="arrow"><i class="fa fa-keyboard_arrow_down"></i></div>
+<div class="paperheader-fixed">
+    <div class="paperheader-fixed-desc">
+        <div class="paperheader-fixed-desc-author"><img src="blog/style/images/logo.png"></div>
+        <div class="paperheader-fixed-desc-title">Sticky Post with a Featured Image</div>
+    </div>
+</div>
+<!--[paperfooter]-->
+<div class="paperfooter-bg"></div>
+<div class="paperfooter-content">
+    <div class="paperfooter-content-a">hou80houzhu`s developworks</div>
+    <div class="paperfooter-content-b">Mars Studio designs & develops digital products. We craft awesome and cool stuff.</div>
+    <div class="paperfooter-content-c">
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-weixin"></i></a>
+    </div>
+    <div class="paperfooter-content-d">
+        <div class="paperfooter-content-d-a">HOME</div>
+    </div>
+    <div class="paperheader-content-e">All content copyright David García © 2015 • All rights reserved.</div>
+</div>
+
+<!--[login]-->
+<div class="login-con">
+    <div class="login-con-logo">
+        <div class="login-con-logo-in"><img src="blog/style/images/logo.png"></div>
+    </div>
+    <div class="login-con-in">
+        <div class="login-con-input">
+            <div class="logo-con-input-label">username</div>
+            <input type="text" placeholder="username">
+        </div>
+        <div class="login-con-input">
+            <div class="logo-con-input-label">password</div>
+            <input type="password" placeholder="password">
+        </div>
+        <div class="login-con-btn">login</div>
+    </div>
+</div>
+<!--[adminhead]-->
+<div class="adminhead-nav">
+    <div class="adminhead-nav-con">
+        <a href="#" class="adminhead-nav-item">Setting</a>
+    </div>
+</div>
+<!--[articlelist]-->
+<div class="articlelist-head">
+    <div class="atticlelist-head-btn" data-find="add" href="admin/addarticle"><i class="fa fa-circle-plus"></i> Add Article</div>
+</div>
+<div class="articlelist-list">
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
+        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
+        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
+        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
+        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+    <div class="list-con">
+        <div class="list-con-title"><a href="detail">Sticky Post with a Featured Image</a></div>
+        <div class="list-con-desc">Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen’s simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.</div>
+        <div class="list-con-time">16 05 12</div>
+    </div>
+</div>
+<!--[editarticle]-->
+<div class="editarticle-con">
+    <div class="editarticle-con-title">Edit Article</div>
+    <div class="editarticle-con-label">Title</div>
+    <div class="editarticle-con-input" data-group="title">
+        <input type="text" placeholder="title" data-groupi="input" name="title">
+    </div>
+    <div class="editarticle-con-label">Short Desc</div>
+    <div class="editarticle-con-input" data-group="desc">
+        <textarea type="text" placeholder="title" data-groupi="input" name="desc"></textarea>
+    </div>
+    <div class="editarticle-con-label">Content</div>
+    <div class="editarticle-con-content" data-find="editor"></div>
+    <div class="editarticle-con-btn">
+        <div class="editarticle-con-btn-submit" data-find="submit">Submit</div>
+    </div>
+</div>

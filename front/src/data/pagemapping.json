@@ -1,0 +1,11 @@
+{
+    "index": "option.index.page",
+    "detail": "option.detail.page",
+    "login": "option.login.page",
+    "admin": "option.article.page",
+    "admin/article": "option.article.page",
+    "admin/addarticle": "option.editarticle.page",
+    "pages/userinfo": "option.userinfo.page",
+    "pages/regist": "option.regist.page",
+    "pages/login": "option.login.page"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "blog",
+  "author": "",
+  "version": "0.0.1",
+  "description": "",
+  "license": "",
+  "bugs": "",
+  "dependencies": {
+    "marked": "^0.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}
