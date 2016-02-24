@@ -159,13 +159,11 @@
 <div class="articlelist-list" data-find="con"></div>
 <div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
 <!--[articlelistitem]-->
-<div>
-    <div class="list-con" data-group="item" @cache(data)>
-         <div class="list-con-title"><a href="detail?id=<%=data.id;%>"><%=data.title;%></a></div>
-        <div class="list-con-desc"><%=data.descs||"no description";%></div>
-        <div class="list-con-time">16 05 12</div>
-        <div class="list-con-remove" data-groupi="remove"><i class="fa fa-circle-cross"></i></div>
-    </div>
+<div class="list-con" data-group="item" @cache(data)>
+     <div class="list-con-title"><a href="admin/editarticle?id=<%=data.id;%>"><%=data.title;%></a></div>
+    <div class="list-con-desc"><%=data.descs||"no description";%></div>
+    <div class="list-con-time">16 05 12</div>
+    <div class="list-con-remove" data-groupi="remove"><i class="fa fa-circle-cross"></i></div>
 </div>
 <!--[editarticle]-->
 <div class="editarticle-con">

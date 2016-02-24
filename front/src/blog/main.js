@@ -162,7 +162,7 @@ Module({
     extend: "view",
     className: "papercontent",
     template: module.getTemplate("@tmp", "papercontent"),
-    init:function(){
+    init: function () {
         this.render();
     },
     setContent: function (data) {
@@ -214,8 +214,8 @@ Module({
     init: function () {
         this.render();
         this.getData();
-        this.data={
-            list:[]
+        this.data = {
+            list: []
         };
         this.observe("data", this.data);
     },
@@ -239,27 +239,27 @@ Module({
         });
     },
     getData: function () {
-        var ths=this;
+        var ths = this;
         this.postRequest(basePath + "admin/api/articlelist").data(function (data) {
-            data.forEach(function(a){
+            data.forEach(function (a) {
                 ths.data.list.push(a);
             });
         });
     },
     group_item: function (dom) {
-        var ths=this;
+        var ths = this;
         dom.items("remove").click(function () {
-            var t=$(this).group().cache();
-            ths.postRequest(basePath+"admin/api/removearticle",{id:t.id}).data(function(){
+            var t = $(this).group().cache();
+            ths.postRequest(basePath + "admin/api/removearticle", {id: t.id}).data(function () {
                 t.remove();
             });
         });
     },
-    "data_list_add":function(data){
-        $.template(module.getTemplate("@tmp", "articlelistitem")).renderAppendTo(this.finders("con"),data.value);
+    "data_list_add": function (data) {
+        $.template(module.getTemplate("@tmp", "articlelistitem")).renderAppendTo(this.finders("con"), data.value);
         this.delegate();
     },
-    "data_list_remove":function(e){
+    "data_list_remove": function (e) {
         this.groups().eq(e.value[0].getIndex()).remove();
         this.delegate();
     }
@@ -269,6 +269,9 @@ Module({
     extend: "view",
     className: "editarticle",
     template: module.getTemplate("@tmp", "editarticle"),
+    option: {
+        url: basePath + "admin/api/addarticle"
+    },
     init: function () {
         this.render();
     },
@@ -280,8 +283,8 @@ Module({
             var editor = window.ace.edit(id);
             editor.setTheme("ace/theme/github");
             editor.getSession().setMode("ace/mode/markdown");
-            editor.focus();
             ths.editor = editor;
+            ths.dispatchEvent("editdone");
         });
     },
     find_submit: function (dom) {
@@ -289,12 +292,22 @@ Module({
             var title = this.groups("title").items("input").val();
             var desc = this.groups("desc").items("input").val();
             var content = this.editor.getValue();
-            this.postRequest(basePath + "admin/api/addarticle", {
+            var t = {
                 title: title,
                 descs: desc,
                 contentmd: content
-            }).data(function () {
+            };
+            if (this.onsubmit) {
+                t = this.onsubmit(t);
+            }
+            this.postRequest(this.option.url, t).data(function () {
             });
         }.bind(this));
+    },
+    setContent: function (data) {
+        this._data = data;
+        this.groups("title").items("input").val(data.title);
+        this.groups("desc").items("input").val(data.descs);
+        this.editor.setValue(data.contentmd);
     }
 });

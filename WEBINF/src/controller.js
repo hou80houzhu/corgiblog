@@ -68,8 +68,28 @@ Module({
             done(this.error());
         }.bind(this));
     },
-    "/removearticle":function(done){
+    "/removearticle": function (done) {
         this.dao.remove(this.getTable("articles").with(this.request)).done(function () {
+            done(this.success());
+        }.bind(this)).fail(function () {
+            done(this.error());
+        }.bind(this));
+    },
+    "/editarticle": function (done) {
+        var marked = require('/marked');
+        marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: true,
+            smartLists: true,
+            smartypants: false
+        });
+        var article = this.getTable("articles").with(this.request);
+        article.set("contenthtml", marked(article.get("contentmd")));
+        this.dao.update(article).done(function () {
             done(this.success());
         }.bind(this)).fail(function () {
             done(this.error());

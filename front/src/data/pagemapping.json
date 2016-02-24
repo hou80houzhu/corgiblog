@@ -5,6 +5,7 @@
     "admin": "option.article.page",
     "admin/article": "option.article.page",
     "admin/addarticle": "option.editarticle.page",
+    "admin/editarticle": "option.editarticle.page",
     "pages/userinfo": "option.userinfo.page",
     "pages/regist": "option.regist.page",
     "pages/login": "option.login.page"
