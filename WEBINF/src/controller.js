@@ -76,7 +76,6 @@ Module({
         var article = this.getTable("articles").with(this.request);
         article.set("contenthtml", this.markd(article.get("contentmd")));
         var a = new Date().getTime();
-        console.log("=======================>>"+a);
         article.set("etime", a);
         this.dao.update(article).done(function () {
             done(this.success());

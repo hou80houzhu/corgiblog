@@ -231,7 +231,8 @@ Module({
     },
     setContent: function (data) {
         this.finders("title").html(data.title);
-        this.finders("time").html(data.time);
+        this.finders("time").html($.showDate(data.time));
+        this.finders("subtitle").html(data.title);
     }
 });
 Module({
@@ -549,7 +550,7 @@ Module({
 $.showDate = function (time) {
     var a = new Date(parseInt(time));
     var b = ["January", "February", "March", "April", "May ", "June", "July", "August", "September", "October", "November", "December"];
-    return a.getDate() + " " + b[a.getMonth()] + " " + a.getFullYear();
+    return (a.getDate()||"") + " " + (b[a.getMonth()]||"") + " " + (a.getFullYear()||"");
 };
 $.toast = function (text) {
     $("<div class='toast'><div class='toast_text'>" + text + "</div></div>").appendTo("body").transition().set("-all-transform").done(function () {

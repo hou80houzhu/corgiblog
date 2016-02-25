@@ -18,7 +18,7 @@ Option({
                         t=t[0];
                         this.getChildAt(0).setContent({
                             title:t.title,
-                            time:t.time
+                            time:t.etime
                         });
                         this.getChildAt(1).setContent(t.contenthtml);
                     }else{

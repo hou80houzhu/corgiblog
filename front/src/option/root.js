@@ -9,7 +9,7 @@ Option({
             this.addChild({
                 type:"@main.pagecontainer",
                 option:{
-                    url:"http://localhost:8080/blog/"
+                    url:basePath
                 }
             });
         }
