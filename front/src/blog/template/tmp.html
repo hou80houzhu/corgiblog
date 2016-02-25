@@ -6,90 +6,92 @@
 <!--[base]-->
 <div class="base-header">
     <div class="base-header-bg" data-find="bg"></div>
-    <div class="base-header-icon">
-        <div class="base-header-iconimg"><img src="blog/style/images/logo.png"></div>
+    <div class="base-header-icon" data-find="link">
+        <a href="about" class="base-header-iconimg"><img src="blog/style/images/logo.png"></a>
     </div>
     <div class="base-header-desc">
         <div class="base-header-desc-a">hou80houzhu`s developworks</div>
-        <div class="base-header-desc-b">Mars Studio designs & develops digital products. We craft awesome and cool stuff.</div>
+        <div class="base-header-desc-b">
+            this blog is created based on my open source projects <br/>
+            Here we will record some of the things I think is worth sharing, as well as some of my projects dynamic<br/>
+            Only to be a developer with craftsman spirit.</div>
     </div>
     <div class="base-header-contact">
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="https://twitter.com/hou80houzhu" target="_blank"><i class="fa fa-twitter"></i></a>
+        <a href="https://github.com/hou80houzhu" target="_blank"><i class="fa fa-github"></i></a>
         <a href="#"><i class="fa fa-weixin"></i></a>
     </div>
     <div class="base-header-projects">
         <div class="base-header-projects-a">my projects</div>
-        <div class="base-header-projects-b">Mars Studio designs & develops digital products.</div>
+        <div class="base-header-projects-b">Those projects are all designed & developed by me.</div>
         <div class="row mid-fix on480-row-2col on768-row-3col">
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/axesjs" target="_blank">
                     <img src="blog/style/images/axesjs.png">
-                    <div class="base-header-projects-item-tip">AxesJS</div>
+                    <div class="base-header-projects-item-tip">An awesome web framework.</div>
                     <div class="base-header-projects-item-name">AxesJS</div>
                 </a>
             </div>
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/axesbuilder" target="_blank">
                     <img src="blog/style/images/axesbuilder.png">
-                    <div class="base-header-projects-item-tip">AxesBuilder</div>
+                    <div class="base-header-projects-item-tip">Build the projects which run with the AxesJS web framework.</div>
                     <div class="base-header-projects-item-name">AxesBuilder</div>
                 </a>
             </div>
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/axestoolkit" target="_blank">
                     <img src="blog/style/images/axestoolkit.png">
-                    <div class="base-header-projects-item-tip">AxesToolkit</div>
+                    <div class="base-header-projects-item-tip">Chrome Develop Toolkit for AxesJS Projects</div>
                     <div class="base-header-projects-item-name">AxesToolkit</div>
                 </a>
             </div>
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/corgiserver" target="_blank">
                     <img src="blog/style/images/corgiserver.png">
-                    <div class="base-header-projects-item-tip">corgiserver</div>
+                    <div class="base-header-projects-item-tip">A web server running javascript like tomcat.</div>
                     <div class="base-header-projects-item-name">corgiserver</div>
                 </a>
             </div>
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/axeserver" target="_blank">
                     <img src="blog/style/images/pagemaker.png">
-                    <div class="base-header-projects-item-tip">PageMaker</div>
-                    <div class="base-header-projects-item-name">corgiserver</div>
+                    <div class="base-header-projects-item-tip">Java web MVC framework. PageMaker is a part of it.To build custom and responsibility website.</div>
+                    <div class="base-header-projects-item-name">PageMaker</div>
                 </a>
             </div>
             <div class="span1-6">
-                <a class="base-header-projects-item" href="#">
+                <a class="base-header-projects-item" href="https://github.com/hou80houzhu/corgiblog" target="_blank">
                     <img src="blog/style/images/dashboard.png">
-                    <div class="base-header-projects-item-tip">DashBoard</div>
+                    <div class="base-header-projects-item-tip">Base on AxesJS framework,A dashboard UI</div>
                     <div class="base-header-projects-item-name">DashBoard</div>
                 </a>
             </div>
         </div>
     </div>
     <div class="logic">
-        <div class="logic-icon" data-find="icon"><img src="blog/style/images/logo.png"></div>
+        <a href="about" class="logic-icon" data-find="icon"><img src="blog/style/images/logo.png"></a>
     </div>
     <div class="logicbtm">
-        <div class="logic-btn"><i class="fa fa-home"></i></div>
-        <div class="logic-btn"><i class="fa fa-twitter"></i></div>
-        <div class="logic-btn"><i class="fa fa-github"></i></div>
+        <div class="logic-btn"><a href="https://twitter.com/hou80houzhu" target="_blank"><i class="fa fa-twitter"></i></a></div>
+        <div class="logic-btn"><a href="https://github.com/hou80houzhu" target="_blank"><i class="fa fa-github"></i></a></div>
     </div>
 </div>
 <!--[list]-->
 <div class="list-container" data-find="container"></div>
-<div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
+<div class="list-loading" data-find="loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
 <!--[listitem]-->
 <div>
     <%for(var i in data){%>
     <div class="list-con">
         <div class="list-con-title"><a href="detail?id=<%=data[i].id;%>"><%=data[i].title;%></a></div>
         <div class="list-con-desc"><%=data[i].descs||"no description";%></div>
-        <div class="list-con-time">16 05 12</div>
+        <div class="list-con-time"><%=$.showDate(data[i].ctime);%></div>
     </div>
     <%}%>
 </div>
 <!--[copyright]-->
-<div class="copyright">All content copyright David García © 2015 • All rights reserved.</div>
+<div class="copyright">©2016 • All rights reserved.</div>
 <!--[papercontent]-->
 <div class="papercontent-con" data-find="con"></div>
 <!--[paperheader]-->
@@ -124,7 +126,7 @@
         <a href="#"><i class="fa fa-weixin"></i></a>
     </div>
     <div class="paperfooter-content-d">
-        <div class="paperfooter-content-d-a">HOME</div>
+        <a class="paperfooter-content-d-a" href="index" data-find="houme">HOME</a>
     </div>
     <div class="paperheader-content-e">All content copyright David García © 2015 • All rights reserved.</div>
 </div>
@@ -137,18 +139,19 @@
     <div class="login-con-in">
         <div class="login-con-input">
             <div class="logo-con-input-label">username</div>
-            <input type="text" placeholder="username">
+            <input type="text" placeholder="username" data-find="username">
         </div>
         <div class="login-con-input">
             <div class="logo-con-input-label">password</div>
-            <input type="password" placeholder="password">
+            <input type="password" placeholder="password" data-find="password">
         </div>
-        <div class="login-con-btn">login</div>
+        <div class="login-con-btn" data-find="submit">login</div>
     </div>
 </div>
 <!--[adminhead]-->
 <div class="adminhead-nav">
     <div class="adminhead-nav-con">
+        <a href="admin/userinfo" class="adminhead-nav-item">userinfo</a>
         <a href="#" class="adminhead-nav-item">Setting</a>
     </div>
 </div>
@@ -157,7 +160,7 @@
     <div class="atticlelist-head-btn" data-find="add" href="admin/addarticle"><i class="fa fa-circle-plus"></i> Add Article</div>
 </div>
 <div class="articlelist-list" data-find="con"></div>
-<div class="list-loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
+<div class="list-loading" data-find="loading"><div class="list-loading-icon"><i class="fa fa-loader fa-spin"></i></div></div>
 <!--[articlelistitem]-->
 <div class="list-con" data-group="item" @cache(data)>
      <div class="list-con-title"><a href="admin/editarticle?id=<%=data.id;%>"><%=data.title;%></a></div>
@@ -181,4 +184,21 @@
     <div class="editarticle-con-btn">
         <div class="editarticle-con-btn-submit" data-find="submit">Submit</div>
     </div>
+</div>
+<!--[edituserinfo]-->
+<div class="editarticle-con">
+    <div class="editarticle-con-title">Edit User Info</div>
+    <div class="editarticle-con-label">Content</div>
+    <div class="editarticle-con-content" data-find="editor"></div>
+    <div class="editarticle-con-btn">
+        <div class="editarticle-con-btn-submit" data-find="submit">Submit</div>
+    </div>
+</div>
+<!--[about]-->
+<div class="about-bg"></div>
+<div class="about-icon">
+    <div class="about-icon-logo"><img src="blog/style/images/logo.png"></div>
+</div>
+<div class="papercontent">
+    <div class="papercontent-con" data-find="content"></div>
 </div>

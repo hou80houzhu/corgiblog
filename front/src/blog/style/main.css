@@ -183,7 +183,9 @@ p {
     -webkit-border-radius: 50%;
     overflow: hidden;
     width: 100px;
-    border: 3px solid white; }
+    height: 100px;
+    border: 3px solid white;
+    text-decoration: none; }
     .base .base-header .base-header-icon .base-header-iconimg img {
       width: 100%; }
 .base .base-header .base-header-projects {
@@ -214,14 +216,15 @@ p {
       display: none;
       background: #0D0B0B;
       color: white;
-      line-height: 25px;
-      padding: 0 10px 0 10px;
+      padding: 5px 10px 5px 10px;
       position: absolute;
       bottom: 100%;
       width: 100px;
       text-align: center;
       margin-left: -60px;
-      left: 50%; }
+      left: 50%;
+      line-height: 15px;
+      font-size: 12px; }
       .base .base-header .base-header-projects .base-header-projects-item .base-header-projects-item-tip:before {
         content: "";
         display: block;
@@ -244,7 +247,8 @@ p {
   /*border-bottom: 1px solid #D7D7D7;*/
   -webkit-transform: translateY(-200px);
   -webkit-transition: all ease-out .5s;
-  text-align: right; }
+  text-align: right;
+  z-index: 999999999; }
   .base .logic .logic-icon {
     -webkit-border-radius: 50%;
     overflow: hidden;
@@ -266,7 +270,8 @@ p {
   height: 50px;
   -webkit-transform: translateY(200px);
   -webkit-transition: all ease-out .5s;
-  text-align: right; }
+  text-align: right;
+  z-index: 999999999; }
   .base .logicbtm .logic-btn {
     line-height: 30px;
     width: 30px;
@@ -277,6 +282,9 @@ p {
     display: inline-block;
     margin: 10px 10px 10px 0;
     vertical-align: top; }
+    .base .logicbtm .logic-btn a {
+      text-decoration: none;
+      color: white; }
 .base.show .logic {
   -webkit-transform: translateY(0); }
 .base.show .logicbtm {
@@ -745,6 +753,69 @@ p {
     .papercontent .papercontent-con img {
       max-width: 100%; }
 
+.about .about-bg {
+  height: 300px;
+  background-image: url(images/bg.jpg);
+  background-position: bottom center;
+  background-repeat: no-repeat; }
+.about .about-icon {
+  text-align: center;
+  margin-top: -55px; }
+  .about .about-icon .about-icon-logo {
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    border: 3px solid white;
+    text-decoration: none; }
+    .about .about-icon .about-icon-logo img {
+      width: 100%; }
+
+.toast {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  height: 30px;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  z-index: 999999999; }
+  .toast .toast_text {
+    line-height: 30px;
+    background: #5F5D5D;
+    color: white;
+    padding: 0 15px 0 15px;
+    -webkit-border-radius: 15px; }
+
+#loadingbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center; }
+  #loadingbar .loadingbar-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05); }
+  #loadingbar .loadingbar-desc {
+    position: relative;
+    padding: 15px 20px 15px 20px;
+    background: white;
+    /*border:1px solid #F8F7F7;*/
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 1px 2px 10px #B2B2B2; }
+
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   .base-header .base-header-bg {
     height: 340px; }
@@ -770,7 +841,12 @@ p {
     -webkit-box-sizing: border-box; }
 
   .adminhead .adminhead-nav .adminhead-nav-con {
-    width: 100%; } }
+    width: 100%; }
+
+  .editarticle .editarticle-con {
+    width: 100%;
+    padding: 0 30px 0 30px;
+    -webkit-box-sizing: border-box; } }
 @media only screen and (max-width: 480px) {
   .base-header .base-header-bg {
     height: 340px; }
@@ -796,6 +872,11 @@ p {
     -webkit-box-sizing: border-box; }
 
   .adminhead .adminhead-nav .adminhead-nav-con {
-    width: 100%; } }
+    width: 100%; }
+
+  .editarticle .editarticle-con {
+    width: 100%;
+    padding: 0 30px 0 30px;
+    -webkit-box-sizing: border-box; } }
 
 /*# sourceMappingURL=main.css.map */

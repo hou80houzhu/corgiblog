@@ -22,9 +22,11 @@ Option({
                 }
             },
             event_editdone: function () {
-                this.postRequest(basePath + "bas/article", this.parameters.query).data(function (data) {
-                    this.getChildAt(1).setContent(data[0]);
-                });
+                if (this.parameters.query) {
+                    this.postRequest(basePath + "bas/article", this.parameters.query).data(function (data) {
+                        this.getChildAt(1).setContent(data[0]);
+                    });
+                }
             }
         }
     }

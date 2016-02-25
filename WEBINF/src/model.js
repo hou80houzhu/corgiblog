@@ -6,7 +6,7 @@ Module({
     extend: "table",
     tableName: "user",
     id:"id",
-    cols: ["id", "username", "password"]
+    cols: ["id", "username", "password","userinfomd","userinfohtml"]
 });
 Module({
     name: "articles",

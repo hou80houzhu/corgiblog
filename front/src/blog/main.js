@@ -7,6 +7,24 @@
  * @css blog.style.style;
  * @json data.pagemapping;
  */
+axes.overrideRequest({
+    doRequest: function (option, reqeustState) {
+        var ths = this;
+        axes.ajax(option).done(function (a) {
+            if (a.code && a.code === "1") {
+                reqeustState._data && reqeustState._data.call(ths, a.data);
+            } else if (a.code && a.code === "2") {
+                ths.dispatchEvent("openPage", {url: "login"});
+            } else {
+                reqeustState._bad && reqeustState._bad.call(ths, a);
+            }
+        }).fail(function (e) {
+            reqeustState._error && reqeustState._error.call(ths, e);
+        });
+    }
+});
+
+
 Module({
     name: "pagecontainer",
     extend: "viewgroup",
@@ -84,6 +102,26 @@ Module({
         this.onunload = function () {
             $(window).unbind("scroll", doscroll);
         };
+    },
+    find_link: function (dom) {
+        var ths = this;
+        dom.find("a").each(function () {
+            $(this).click(function (e) {
+                ths.dispatchEvent("openPage", {
+                    url: $(this).attr("href")
+                });
+                e.preventDefault();
+            });
+        });
+    },
+    find_icon: function (dom) {
+        var ths = this;
+        dom.click(function (e) {
+            ths.dispatchEvent("openPage", {
+                url: $(this).attr("href")
+            });
+            e.preventDefault();
+        });
     }
 });
 Module({
@@ -91,9 +129,26 @@ Module({
     extend: "view",
     className: "list",
     template: module.getTemplate("@tmp", "list"),
+    option: {
+        url: basePath + "bas/articlelist",
+        size: 10
+    },
     init: function () {
+        this.current = 0;
+        this.isend = false;
+        this.isloading = false;
         this.render();
         this.getData();
+        var doscroll = function () {
+            var a = this.finders("loading").get(0).offsetTop;
+            if (a && $("body").scrollTop() > this.finders("loading").get(0).offsetTop - $(window).height()) {
+                this.getData();
+            }
+        }.bind(this);
+        $(window).bind("scroll", doscroll);
+        this.onunload = function () {
+            $(window).unbind("scroll", doscroll);
+        };
     },
     onnodeinserted: function (dom) {
         var ths = this;
@@ -107,9 +162,31 @@ Module({
         });
     },
     getData: function () {
-        this.postRequest(basePath + "admin/api/articlelist").data(function (data) {
-            $($.template(module.getTemplate("@tmp", "listitem")).render(data)).appendTo(this.finders("container"));
-        });
+        if (!this.isend) {
+            if (!this.isloading) {
+                this.isloading = true;
+                var from = this.current * this.option.size;
+                var end = this.option.size;
+                this.finders("loading").show();
+                this.postRequest(this.option.url, {
+                    from: from,
+                    size: end
+                }).data(function (data) {
+                    this.current = this.current + 1;
+                    $($.template(module.getTemplate("@tmp", "listitem")).render(data)).appendTo(this.finders("container"));
+                    this.delegate();
+                    this.isloading = false;
+                    if (data.length <= 0 || data.length < this.option.size) {
+                        this.isend = true;
+                        this.finders("loading").hide();
+                    }
+                }).bad(function () {
+                    this.finders("loading").hide();
+                }).error(function () {
+                    this.finders("loading").hide();
+                });
+            }
+        }
     }
 });
 Module({
@@ -135,7 +212,7 @@ Module({
         var ths = this;
         var t = function () {
             var t = $("body").scrollTop();
-            dom.css("opacity", 1.5 * (t / dom.height()));
+            dom.css("opacity", 1 * (t / dom.height()));
             if (t > dom.height()) {
                 ths.dom.addClass("show");
             } else {
@@ -176,6 +253,15 @@ Module({
     template: module.getTemplate("@tmp", "paperfooter"),
     init: function () {
         this.render();
+    },
+    find_home: function (dom) {
+        var ths = this;
+        dom.click(function (e) {
+            ths.dispatchEvent("openPage", {
+                url: $(this).attr("href")
+            });
+            e.preventDefault();
+        });
     }
 });
 
@@ -186,6 +272,21 @@ Module({
     template: module.getTemplate("@tmp", "login"),
     init: function () {
         this.render();
+    },
+    find_submit: function (dom) {
+        dom.click(function () {
+            var un = this.finders("username").val();
+            var pw = this.finders("password").val();
+            if (un && pw) {
+                this.postRequest(basePath + "bas/login", {username: un, password: pw}).data(function () {
+                    this.dispatchEvent("redirectPage", {
+                        url: "admin"
+                    });
+                }).bad(function () {
+                    $.toast("username or password is not matched");
+                });
+            }
+        }.bind(this));
     }
 });
 Module({
@@ -211,13 +312,30 @@ Module({
     extend: "view",
     className: "list",
     template: module.getTemplate("@tmp", "articlelist"),
+    option: {
+        url: basePath + "admin/api/articlelist",
+        size: 10
+    },
     init: function () {
+        this.current = 0;
+        this.isend = false;
+        this.isloading = false;
         this.render();
         this.getData();
         this.data = {
             list: []
         };
         this.observe("data", this.data);
+        var doscroll = function () {
+            var a = this.finders("loading").get(0).offsetTop;
+            if (a && $("body").scrollTop() > this.finders("loading").get(0).offsetTop - $(window).height()) {
+                this.getData();
+            }
+        }.bind(this);
+        $(window).bind("scroll", doscroll);
+        this.onunload = function () {
+            $(window).unbind("scroll", doscroll);
+        };
     },
     find_add: function (dom) {
         var ths = this;
@@ -240,11 +358,32 @@ Module({
     },
     getData: function () {
         var ths = this;
-        this.postRequest(basePath + "admin/api/articlelist").data(function (data) {
-            data.forEach(function (a) {
-                ths.data.list.push(a);
-            });
-        });
+        if (!this.isend) {
+            if (!this.isloading) {
+                this.isloading = true;
+                var from = this.current * this.option.size;
+                var end = this.option.size;
+                this.finders("loading").show();
+                this.postRequest(this.option.url, {
+                    from: from,
+                    size: end
+                }).data(function (data) {
+                    this.current = this.current + 1;
+                    data.forEach(function (a) {
+                        ths.data.list.push(a);
+                    });
+                    this.isloading = false;
+                    if (data.length <= 0 || data.length < this.option.size) {
+                        this.isend = true;
+                        this.finders("loading").hide();
+                    }
+                }).bad(function () {
+                    this.finders("loading").hide();
+                }).error(function () {
+                    this.finders("loading").hide();
+                });
+            }
+        }
     },
     group_item: function (dom) {
         var ths = this;
@@ -292,16 +431,43 @@ Module({
             var title = this.groups("title").items("input").val();
             var desc = this.groups("desc").items("input").val();
             var content = this.editor.getValue();
-            var t = {
-                title: title,
-                descs: desc,
-                contentmd: content
-            };
-            if (this.onsubmit) {
-                t = this.onsubmit(t);
+            var checked = false;
+            if (title) {
+                if (desc) {
+                    if (content) {
+                        checked = true;
+                    } else {
+                        $.toast("content can not empty");
+                    }
+                } else {
+                    $.toast("desc can not empty");
+                }
+            } else {
+                $.toast("title can not empty");
             }
-            this.postRequest(this.option.url, t).data(function () {
-            });
+            if (checked) {
+                var t = {
+                    title: title,
+                    descs: desc,
+                    contentmd: content
+                };
+                if (this.onsubmit) {
+                    t = this.onsubmit(t);
+                }
+                $.loadingbar().showLoading();
+                this.postRequest(this.option.url, t).data(function () {
+                    this.setContent({
+                        title: "",
+                        descs: "",
+                        contentmd: ""
+                    });
+                    $.loadingbar().showSuccess();
+                }).bad(function () {
+                    $.loadingbar().showError();
+                }).error(function () {
+                    $.loadingbar().showError();
+                });
+            }
         }.bind(this));
     },
     setContent: function (data) {
@@ -311,3 +477,123 @@ Module({
         this.editor.setValue(data.contentmd);
     }
 });
+Module({
+    name: "edituserinfo",
+    extend: "view",
+    className: "editarticle",
+    template: module.getTemplate("@tmp", "edituserinfo"),
+    option: {
+        url: basePath + "admin/api/edituserinfo"
+    },
+    init: function () {
+        this.render();
+    },
+    find_editor: function (dom) {
+        var ths = this;
+        $.loader().js(this.getStaticPath("js", "blog.lib.ace.ace"), function () {
+            var id = ths.getUUID();
+            $().create("pre").css({height: "600px"}).attr("id", id).appendTo(dom);
+            var editor = window.ace.edit(id);
+            editor.setTheme("ace/theme/github");
+            editor.getSession().setMode("ace/mode/markdown");
+            ths.editor = editor;
+            ths.dispatchEvent("editdone");
+        });
+    },
+    find_submit: function (dom) {
+        dom.click(function () {
+            var content = this.editor.getValue();
+            var checked = false;
+            if (content) {
+                checked = true;
+            } else {
+                $.toast("content can not empty");
+            }
+            if (checked) {
+                this.info.userinfomd = content;
+                $.loadingbar().showLoading();
+                this.postRequest(this.option.url, this.info).data(function () {
+                    $.loadingbar().showSuccess();
+                }).bad(function () {
+                    $.loadingbar().showError();
+                }).error(function () {
+                    $.loadingbar().showError();
+                });
+            }
+        }.bind(this));
+    },
+    setContent: function (data) {
+        this.editor.setValue(data);
+    },
+    event_editdone: function () {
+        this.postRequest(basePath + "admin/api/userinfo").data(function (data) {
+            this.info = data[0];
+            this.editor.setValue(data[0].userinfomd);
+        });
+    }
+});
+
+Module({
+    name: "about",
+    extend: "view",
+    className: "about",
+    template: module.getTemplate("@tmp", "about"),
+    init: function () {
+        this.render();
+        this.postRequest(basePath + "bas/userinfo").data(function (a) {
+            this.finders("content").html(a[0].userinfohtml);
+        });
+    }
+});
+
+$.showDate = function (time) {
+    var a = new Date(parseInt(time));
+    var b = ["January", "February", "March", "April", "May ", "June", "July", "August", "September", "October", "November", "December"];
+    return a.getDate() + " " + b[a.getMonth()] + " " + a.getFullYear();
+};
+$.toast = function (text) {
+    $("<div class='toast'><div class='toast_text'>" + text + "</div></div>").appendTo("body").transition().set("-all-transform").done(function () {
+        this.transition().removeAll().set("opacity", {time: 1000}).delay(2000).then(function () {
+            this.css("opacity", 0);
+        }).delay(1000).done(function () {
+            this.remove();
+        }).resolve();
+    }).scope().transform().y(-150);
+};
+$.loadingbar = function () {
+    var a = $("#loadingbar");
+    if (a.length === 0) {
+        a = $("<div id='loadingbar'>" +
+                "<div class='loadingbar-bg'></div>" +
+                "<div class='loadingbar-desc'></div></div>").appendTo("body");
+    }
+    return new loadingbar(a);
+};
+var loadingbar = function (dom) {
+    this.dom = dom;
+};
+loadingbar.prototype.showLoading = function (text) {
+    this.dom.children(1).html("<i class='fa fa-repeat fa-spin'></i> " + (text || 'Loading...'));
+    return this;
+};
+loadingbar.prototype.showError = function (text) {
+    var ps = $.promise(), ths = this;
+    setTimeout(function () {
+        ths.close();
+        ps.resolve();
+    }, 2000);
+    this.dom.children(1).html("<i class='fa fa-circle-cross'></i> " + (text || '操作错误'));
+    return ps;
+};
+loadingbar.prototype.showSuccess = function (text) {
+    var ps = $.promise(), ths = this;
+    setTimeout(function () {
+        ths.close();
+        ps.resolve();
+    }, 2000);
+    this.dom.children(1).html("<i class='fa fa-circle-check'></i> " + (text || '操作成功'));
+    return ps;
+};
+loadingbar.prototype.close = function () {
+    this.dom.remove();
+};
