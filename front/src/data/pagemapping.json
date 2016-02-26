@@ -8,8 +8,5 @@
     "admin/article": "option.article.page",
     "admin/addarticle": "option.editarticle.page",
     "admin/editarticle": "option.editarticle.page",
-    "admin/userinfo":"option.userinfo.page",
-    "pages/userinfo": "option.userinfo.page",
-    "pages/regist": "option.regist.page",
-    "pages/login": "option.login.page"
+    "admin/userinfo":"option.userinfo.page"
 }

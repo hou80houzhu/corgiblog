@@ -37,6 +37,23 @@ Module({
     }
 });
 Module({
+    name: "page",
+    extend: "controller",
+    path: "/",
+    before: function (next, done) {
+        done(this.getFileView(this.getProjectInfo().getProjectPath() + "index.html"));
+    },
+    "/index": function () {},
+    "/detail": function () {},
+    "/login": function () {},
+    "/admin": function () {},
+    "/about": function () {},
+    "/admin/article": function () {},
+    "/admin/addarticle": function () {},
+    "/admin/editarticle": function () {},
+    "/admin/userinfo": function () {}
+});
+Module({
     name: "admin",
     extend: "@.base",
     path: "/admin/api",

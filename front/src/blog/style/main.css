@@ -213,7 +213,8 @@ p {
     width: 100px;
     height: 100px;
     border: 3px solid white;
-    text-decoration: none; }
+    text-decoration: none;
+    background: white; }
     .base .base-header .base-header-icon .base-header-iconimg img {
       width: 100%; }
 .base .base-header .base-header-projects {
@@ -853,6 +854,12 @@ p {
     -webkit-border-radius: 2px;
     -webkit-box-shadow: 1px 2px 10px #B2B2B2; }
 
+@media only screen and (min-width: 1024px) {
+  .papercontent {
+    width: 700px; } }
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .papercontent {
+    width: 700px; } }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
   .base-header .base-header-bg {
     height: 340px; }

@@ -1,17 +1,17 @@
 @font-face {
-    font-family: 'axes';
-    src:    url('fonts/axes.eot?bj1hjo');
-    src:    url('fonts/axes.eot?bj1hjo#iefix') format('embedded-opentype'),
-        url('fonts/axes.ttf?bj1hjo') format('truetype'),
-        url('fonts/axes.woff?bj1hjo') format('woff'),
-        url('fonts/axes.svg?bj1hjo#axes') format('svg');
+    font-family: 'bright';
+    src:    url('fonts/bright.eot?bj1hjo');
+    src:    url('fonts/bright.eot?bj1hjo#iefix') format('embedded-opentype'),
+        url('fonts/bright.ttf?bj1hjo') format('truetype'),
+        url('fonts/bright.woff?bj1hjo') format('woff'),
+        url('fonts/bright.svg?bj1hjo#bright') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 .fa {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'axes' !important;
+    font-family: 'bright' !important;
     speak: none;
     font-style: normal;
     font-weight: normal;

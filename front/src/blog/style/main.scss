@@ -80,6 +80,7 @@
                 height:100px;
                 border:3px solid white;
                 text-decoration: none;
+                background:white;
                 img{
                     width:100%;
                 }
@@ -904,8 +905,14 @@
 }
 
 @media only screen  and (min-width: 1024px) {
+    .papercontent{
+        width:700px;
+    }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .papercontent{
+        width:700px;
+    }
 }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
     .base-header{

@@ -130,7 +130,7 @@ var _history = function (url) {
     this._currentIndex = 0;
     var ths = this;
     router.add("404", function () {
-        console.log("[axes] router no page.");
+        console.log("[bright] router no page.");
     });
     agent.onChange(function (e) {
         _history._run.call(ths, e.state, e);
@@ -159,7 +159,7 @@ _history._run = function (data, e) {
     if (r.found) {
         var info = {};
         if (e) {
-            axes.extend(data, e.state);
+            bright.extend(data, e.state);
         }
         if (data.__index__ !== undefined && data.__index__ !== null) {
             if (data.__index__ < this._currentIndex) {

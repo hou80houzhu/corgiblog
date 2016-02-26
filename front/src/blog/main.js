@@ -7,10 +7,10 @@
  * @css blog.style.style;
  * @json data.pagemapping;
  */
-axes.overrideRequest({
+bright.overrideRequest({
     doRequest: function (option, reqeustState) {
         var ths = this;
-        axes.ajax(option).done(function (a) {
+        bright.ajax(option).done(function (a) {
             if (a.code && a.code === "1") {
                 reqeustState._data && reqeustState._data.call(ths, a.data);
             } else if (a.code && a.code === "2") {
@@ -549,7 +549,7 @@ Module({
 
 $.showDate = function (time) {
     var a = new Date(parseInt(time));
-    var b = ["January", "February", "March", "April", "May ", "June", "July", "August", "September", "October", "November", "December"];
+    var b = ["Jan", "Feb", "Mar", "Apr", "May ", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     return (a.getDate()||"") + " " + (b[a.getMonth()]||"") + " " + (a.getFullYear()||"");
 };
 $.toast = function (text) {
