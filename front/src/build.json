@@ -5,7 +5,8 @@
    "updatePage": {
       "type": 1,
       "path": [
-         "../../index.html"
+         "../../index.html",
+         "../../index.csp"
       ]
    },
    "cssCompressWithout": [],
