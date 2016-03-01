@@ -122,6 +122,15 @@ Module({
             });
             e.preventDefault();
         });
+    },
+    find_about: function (dom) {
+        var ths = this;
+        dom.click(function (e) {
+            ths.dispatchEvent("openPage", {
+                url: $(this).attr("href")
+            });
+            e.preventDefault();
+        });
     }
 });
 Module({
