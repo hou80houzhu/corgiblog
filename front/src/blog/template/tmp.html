@@ -86,8 +86,8 @@
 <!--[listitem]-->
 <div>
     <%for(var i in data){%>
-    <div class="list-con">
-        <div class="list-con-title"><a href="detail?id=<%=data[i].id;%>"><%=data[i].title;%></a></div>
+    <div class="list-con" data-group="item" @cache(data[i])>
+        <div class="list-con-title"><a href="detail?id=<%=data[i].id;%>" data-groupi="title"><%=data[i].title;%></a></div>
         <div class="list-con-desc"><%=data[i].descs||"no description";%></div>
         <div class="list-con-time"><%=$.showDate(data[i].ctime);%></div>
     </div>

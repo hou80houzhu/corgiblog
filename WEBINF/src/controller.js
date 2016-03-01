@@ -130,7 +130,8 @@ Module({
     path: "/bas",
     dao: "mysql",
     "/articlelist": function (done) {
-        this.dao.findPage(this.getTable("articles"), this.request.getParameter("from"), this.request.getParameter("size")).done(function (a) {
+        this.dao.query("select title,contenthtml,etime,descs from articles order by etime DESC limit ?,?",[this.request.getParameter("from")/1, this.request.getParameter("size")/1]).done(function (a) {
+//        this.dao.findPage(this.getTable("articles"), this.request.getParameter("from"), this.request.getParameter("size")).done(function (a) {
             done(this.success(a));
         }.bind(this)).fail(function () {
             done(this.error());

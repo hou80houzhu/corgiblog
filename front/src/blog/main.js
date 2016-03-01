@@ -155,7 +155,8 @@ Module({
         $(dom).find("a").each(function () {
             $(this).click(function (e) {
                 ths.dispatchEvent("openPage", {
-                    url: $(this).attr("href")
+                    url: $(this).attr("href"),
+                    data: $(this).group().cache()
                 });
                 e.preventDefault();
             });
@@ -171,9 +172,9 @@ Module({
                 this.postRequest(this.option.url, {
                     from: from,
                     size: end
-                }).data(function (data) {
+                }, {cache: true}).data(function (data) {
                     this.current = this.current + 1;
-                    $($.template(module.getTemplate("@tmp", "listitem")).render(data)).appendTo(this.finders("container"));
+                    $.template(module.getTemplate("@tmp", "listitem")).renderAppendTo(this.finders("container"), data);
                     this.delegate();
                     this.isloading = false;
                     if (data.length <= 0 || data.length < this.option.size) {
@@ -550,7 +551,7 @@ Module({
 $.showDate = function (time) {
     var a = new Date(parseInt(time));
     var b = ["Jan", "Feb", "Mar", "Apr", "May ", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return (a.getDate()||"") + " " + (b[a.getMonth()]||"") + " " + (a.getFullYear()||"");
+    return (a.getDate() || "") + " " + (b[a.getMonth()] || "") + " " + (a.getFullYear() || "");
 };
 $.toast = function (text) {
     $("<div class='toast'><div class='toast_text'>" + text + "</div></div>").appendTo("body").transition().set("-all-transform").done(function () {
