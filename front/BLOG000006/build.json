@@ -1,0 +1,1 @@
+{"id":"BLOG","build":"000006","pathPrefix":"<%=request.getHttpPath();%>front/","updatePage":{"type":1,"path":["../../index.html","../../index.csp"]},"cssCompressWithout":[],"codeCompressWithout":[],"tmpCompressWithout":[]}
