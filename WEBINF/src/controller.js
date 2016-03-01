@@ -41,7 +41,7 @@ Module({
     extend: "controller",
     path: "/",
     before: function (next, done) {
-        done(this.getFileView(this.getProjectInfo().getProjectPath() + "index.html"));
+        done(this.getFileView(this.getProjectInfo().getProjectPath() + "index.csp"));
     },
     "/index": function () {},
     "/detail": function () {},
