@@ -380,11 +380,11 @@ p {
 .paperheader {
   height: 100%;
   position: relative;
-  background-image: url(images/test.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom center;
   background-attachment: fixed;
+  background-image: url(images/test.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
   background-color: black;
   width: 100%;
   overflow: hidden; }
@@ -987,6 +987,9 @@ p {
   .papercontent {
     width: 700px; } }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .paperheader {
+    background-attachment: scroll; }
+
   .papercontent {
     width: 700px; } }
 @media only screen and (min-width: 480px) and (max-width: 768px) {
@@ -1004,11 +1007,13 @@ p {
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
 
-  .paperheader .paperheader-content {
-    left: 40px;
-    right: 40px; }
-    .paperheader .paperheader-content .paperheader-content-con {
-      width: 100%; }
+  .paperheader {
+    background-attachment: scroll; }
+    .paperheader .paperheader-content {
+      left: 40px;
+      right: 40px; }
+      .paperheader .paperheader-content .paperheader-content-con {
+        width: 100%; }
 
   .papercontent {
     width: 100%;
@@ -1041,11 +1046,13 @@ p {
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
 
-  .paperheader .paperheader-content {
-    left: 30px;
-    right: 30px; }
-    .paperheader .paperheader-content .paperheader-content-con {
-      width: 100%; }
+  .paperheader {
+    background-attachment: scroll; }
+    .paperheader .paperheader-content {
+      left: 30px;
+      right: 30px; }
+      .paperheader .paperheader-content .paperheader-content-con {
+        width: 100%; }
 
   .papercontent {
     width: 100%;
