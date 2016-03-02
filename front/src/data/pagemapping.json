@@ -1,6 +1,8 @@
 {
     "index": "option.index.page",
     "index.html": "option.index.page",
+    "index.csp": "option.index.page",
+    "404": "option.nofind.page",
     "detail": "option.detail.page",
     "login": "option.login.page",
     "admin": "option.article.page",

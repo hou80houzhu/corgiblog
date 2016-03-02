@@ -1,6 +1,6 @@
 {
    "id": "BLOG",
-   "build": "000006",
+   "build": "000013",
    "pathPrefix": "<%=request.getHttpPath();%>front/",
    "updatePage": {
       "type": 1,
@@ -11,5 +11,11 @@
    },
    "cssCompressWithout": [],
    "codeCompressWithout": [],
-   "tmpCompressWithout": []
+   "tmpCompressWithout": [],
+   "jsNoCompress": [
+      "blog/lib"
+   ],
+   "cssNoCompress": [
+      "blog/lib"
+   ]
 }

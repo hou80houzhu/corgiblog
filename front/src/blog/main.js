@@ -557,6 +557,25 @@ Module({
     }
 });
 
+Module({
+    name: "noadminhead",
+    extend: "view",
+    className: "adminhead",
+    template: module.getTemplate("@tmp", "noadminhead"),
+    init: function () {
+        this.render();
+    }
+});
+Module({
+    name:"nofind",
+    extend:"view",
+    className:"nofind",
+    template:module.getTemplate("@tmp","nofind"),
+    init:function(){
+        this.render();
+    }
+});
+
 $.showDate = function (time) {
     var a = new Date(parseInt(time));
     var b = ["Jan", "Feb", "Mar", "Apr", "May ", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
