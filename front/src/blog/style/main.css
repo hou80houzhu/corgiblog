@@ -543,7 +543,8 @@ p {
         font-weight: 400;
         display: inline-block;
         vertical-align: top;
-        background: #0E97AD; }
+        background: #0E97AD;
+        text-decoration: none; }
     .paperfooter .paperfooter-content .paperheader-content-e {
       padding: 30px 30px 0 30px;
       font-size: 12px;
