@@ -175,13 +175,16 @@
 <!--[editarticle]-->
 <div class="editarticle-con">
     <div class="editarticle-con-title">Edit Article</div>
+    <div class="editarticle-con-image">
+        <@module type="{{option.imageType}}"/>
+    </div>
     <div class="editarticle-con-label">Title</div>
     <div class="editarticle-con-input" data-group="title">
         <input type="text" placeholder="title" data-groupi="input" name="title">
     </div>
     <div class="editarticle-con-label">Short Desc</div>
     <div class="editarticle-con-input" data-group="desc">
-        <textarea type="text" placeholder="title" data-groupi="input" name="desc"></textarea>
+        <textarea type="text" placeholder="title" data-groupi="input" name="desc" style="height:100px;"></textarea>
     </div>
     <div class="editarticle-con-label">Content</div>
     <div class="editarticle-con-content" data-find="editor"></div>

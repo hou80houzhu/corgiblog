@@ -69,18 +69,42 @@ Module({
         done(view);
     },
     "/addarticle": function (done) {
-        var article = this.getTable("articles").with(this.request);
-        article.set("contenthtml", this.markd(article.get("contentmd")));
-        var a = new Date().getTime();
-        article.set("etime", a);
-        article.set("ctime", a);
-        this.dao.transaction().then(function () {
-            return this.add(article);
-        }).done(function (data) {
-            done(this.success());
-        }.bind(this)).fail(function () {
-            done(this.error());
-        }.bind(this));
+        var file = this.request.getParameter("file");
+        if (file) {
+            var n = (new Date().getTime()) + ".png";
+            var hp = this.request.getHttpPath() + "upload/" + n;
+            bright.file(file.path).move(this.getProjectInfo().getProjectPath() + "upload/" + n).scope(this).done(function (a) {
+                var article = this.getTable("articles").with(this.request);
+                article.set("contenthtml", this.markd(article.get("contentmd")));
+                var a = new Date().getTime();
+                article.set("etime", a);
+                article.set("ctime", a);
+                article.set("images", hp);
+                this.dao.transaction().then(function () {
+                    return this.add(article);
+                }).done(function (data) {
+                    done(this.success());
+                }.bind(this)).fail(function () {
+                    done(this.error());
+                }.bind(this));
+            }).fail(function () {
+                done(this.error());
+            }.bind(this));
+        } else {
+            var article = this.getTable("articles").with(this.request);
+            article.set("contenthtml", this.markd(article.get("contentmd")));
+            var a = new Date().getTime();
+            article.set("etime", a);
+            article.set("ctime", a);
+            article.set("images", hp);
+            this.dao.transaction().then(function () {
+                return this.add(article);
+            }).done(function (data) {
+                done(this.success());
+            }.bind(this)).fail(function () {
+                done(this.error());
+            }.bind(this));
+        }
     },
     "/removearticle": function (done) {
         this.dao.remove(this.getTable("articles").with(this.request)).done(function () {
@@ -90,15 +114,35 @@ Module({
         }.bind(this));
     },
     "/editarticle": function (done) {
-        var article = this.getTable("articles").with(this.request);
-        article.set("contenthtml", this.markd(article.get("contentmd")));
-        var a = new Date().getTime();
-        article.set("etime", a);
-        this.dao.update(article).done(function () {
-            done(this.success());
-        }.bind(this)).fail(function () {
-            done(this.error());
-        }.bind(this));
+        var file = this.request.getParameter("file");
+        if (file) {
+            var n = (new Date().getTime()) + ".png";
+            var hp = "upload/" + n;
+            bright.file(file.path).move(this.getProjectInfo().getProjectPath() + "upload/" + n).scope(this).done(function (a) {
+                var article = this.getTable("articles").with(this.request);
+                article.set("contenthtml", this.markd(article.get("contentmd")));
+                article.set("images", hp);
+                var a = new Date().getTime();
+                article.set("etime", a);
+                this.dao.update(article).done(function () {
+                    done(this.success());
+                }.bind(this)).fail(function () {
+                    done(this.error());
+                }.bind(this));
+            }).fail(function () {
+                done(this.error());
+            }.bind(this));
+        } else {
+            var article = this.getTable("articles").with(this.request);
+            article.set("contenthtml", this.markd(article.get("contentmd")));
+            var a = new Date().getTime();
+            article.set("etime", a);
+            this.dao.update(article).done(function () {
+                done(this.success());
+            }.bind(this)).fail(function () {
+                done(this.error());
+            }.bind(this));
+        }
     },
     "/userinfo": function (done) {
         this.dao.query("select userinfohtml,userinfomd,username,id from user where username=?", ["admin"]).done(function (a) {
@@ -130,8 +174,7 @@ Module({
     path: "/bas",
     dao: "mysql",
     "/articlelist": function (done) {
-        this.dao.query("select id,title,contenthtml,etime,descs from articles order by etime DESC limit ?,?",[this.request.getParameter("from")/1, this.request.getParameter("size")/1]).done(function (a) {
-//        this.dao.findPage(this.getTable("articles"), this.request.getParameter("from"), this.request.getParameter("size")).done(function (a) {
+        this.dao.query("select id,title,contenthtml,etime,descs,images from articles order by etime DESC limit ?,?", [this.request.getParameter("from") / 1, this.request.getParameter("size") / 1]).done(function (a) {
             done(this.success(a));
         }.bind(this)).fail(function () {
             done(this.error());

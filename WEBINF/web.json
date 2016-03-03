@@ -1,7 +1,12 @@
 {
     "page": {
         "index": "index.csp",
-        "404":"index.csp"
+        "404": "index.csp"
+    },
+    "upload": {
+        "temp": "G:/_temp",
+        "encoding": "utf-8",
+        "max": 20971520
     },
     "service": [
         {
@@ -31,11 +36,11 @@
         {
             "name": "cachefilter",
             "option": {
-                "etag": true,
+                "etag": false,
                 "cacheSetting": {
-                    "png": 20000,
-                    "js": 2000,
-                    "default": 2000
+                    "png": 31556926,
+                    "js": 31556926,
+                    "default": 31556926
                 }
             }
         },

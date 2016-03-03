@@ -16,7 +16,8 @@ Option({
                     var t = this.parameters.info;
                     this.getChildAt(0).setContent({
                         title: t.title,
-                        time: t.etime
+                        time: t.etime,
+                        images: t.images
                     });
                     this.getChildAt(1).setContent(t.contenthtml);
                 } else {
@@ -25,7 +26,8 @@ Option({
                             t = t[0];
                             this.getChildAt(0).setContent({
                                 title: t.title,
-                                time: t.etime
+                                time: t.etime,
+                                images: t.images
                             });
                             this.getChildAt(1).setContent(t.contenthtml);
                         } else {

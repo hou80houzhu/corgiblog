@@ -2,6 +2,7 @@
  * @packet blog.main;
  * @require blog.util.router;
  * @template blog.template.tmp;
+ * @include blog.images;
  * @css blog.style.grid;
  * @css blog.style.main;
  * @css blog.style.style;
@@ -243,6 +244,9 @@ Module({
         this.finders("title").html(data.title);
         this.finders("time").html($.showDate(data.time));
         this.finders("subtitle").html(data.title);
+        if (data.images) {
+            this.dom.css("background-image", "url(" + basePath + data.images + ")");
+        }
     }
 });
 Module({
@@ -416,14 +420,12 @@ Module({
 });
 Module({
     name: "editarticle",
-    extend: "view",
+    extend: "viewgroup",
     className: "editarticle",
-    template: module.getTemplate("@tmp", "editarticle"),
+    layout: module.getTemplate("@tmp", "editarticle"),
     option: {
+        imageType: "@images.imagesuploader",
         url: basePath + "admin/api/addarticle"
-    },
-    init: function () {
-        this.render();
     },
     find_editor: function (dom) {
         var ths = this;
@@ -466,16 +468,10 @@ Module({
                     t = this.onsubmit(t);
                 }
                 $.loadingbar().showLoading();
-                this.postRequest(this.option.url, t).data(function () {
-                    this.setContent({
-                        title: "",
-                        descs: "",
-                        contentmd: ""
-                    });
+                this.getChildAt(0).option.url = this.option.url;
+                this.getChildAt(0).upload(t, function () {
                     $.loadingbar().showSuccess();
-                }).bad(function () {
-                    $.loadingbar().showError();
-                }).error(function () {
+                }, function () {
                     $.loadingbar().showError();
                 });
             }
@@ -485,6 +481,9 @@ Module({
         this._data = data;
         this.groups("title").items("input").val(data.title);
         this.groups("desc").items("input").val(data.descs);
+        if (data.images) {
+            this.getChildAt(0).setImage(basePath + data.images);
+        }
         this.editor.setValue(data.contentmd);
     }
 });
@@ -567,11 +566,11 @@ Module({
     }
 });
 Module({
-    name:"nofind",
-    extend:"view",
-    className:"nofind",
-    template:module.getTemplate("@tmp","nofind"),
-    init:function(){
+    name: "nofind",
+    extend: "view",
+    className: "nofind",
+    template: module.getTemplate("@tmp", "nofind"),
+    init: function () {
         this.render();
     }
 });

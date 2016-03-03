@@ -13,5 +13,5 @@ Module({
     extend: "table",
     tableName: "articles",
     id:"id",
-    cols: ["id", "title", "contentmd","contenthtml","ctime","etime","author","descs"]
+    cols: ["id", "title", "contentmd","contenthtml","ctime","etime","author","descs","images"]
 });
