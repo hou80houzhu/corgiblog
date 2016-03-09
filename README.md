@@ -9,7 +9,7 @@ This is a nodejs project ,but you can not run with nodejs only,you must install 
 install corgiserver
 
 ```
-$ npm install corgiserver
+$ npm install corgiserver -g
 ```
 
 ### step 2.
