@@ -1,5 +1,5 @@
 /* 
- * @packet table.blog;
+ * @packet model;
  */
 Module({
     name: "user",

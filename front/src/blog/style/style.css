@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'bright';
-    src:    url('fonts/bright.eot?bj1hjo');
-    src:    url('fonts/bright.eot?bj1hjo#iefix') format('embedded-opentype'),
-        url('fonts/bright.ttf?bj1hjo') format('truetype'),
-        url('fonts/bright.woff?bj1hjo') format('woff'),
-        url('fonts/bright.svg?bj1hjo#bright') format('svg');
+    src:    url('fonts/bright.eot?eevg9l');
+    src:    url('fonts/bright.eot?eevg9l#iefix') format('embedded-opentype'),
+        url('fonts/bright.ttf?eevg9l') format('truetype'),
+        url('fonts/bright.woff?eevg9l') format('woff'),
+        url('fonts/bright.svg?eevg9l#bright') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,39 +24,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.fa-keyboard_arrow_down:before {
-    content: "\e313";
-}
-.fa-keyboard_arrow_left:before {
-    content: "\e314";
-}
-.fa-keyboard_arrow_right:before {
-    content: "\e315";
-}
-.fa-keyboard_arrow_up:before {
-    content: "\e316";
-}
-.fa-local_cafe:before {
-    content: "\e541";
-}
-.fa-local_offer:before {
-    content: "\e54e";
-}
-.fa-local_post_office:before {
-    content: "\e554";
-}
-.fa-keyboard_control:before {
-    content: "\e5d3";
-}
-.fa-more_vert:before {
-    content: "\e5d4";
-}
-.fa-refresh:before {
-    content: "\e5d5";
-}
-.fa-touch_app:before {
-    content: "\e913";
-}
 .fa-eye:before {
     content: "\e000";
 }
@@ -156,13 +123,49 @@
 .fa-inbox:before {
     content: "\e122";
 }
+.fa-keyboard_arrow_down:before {
+    content: "\e313";
+}
+.fa-keyboard_arrow_left:before {
+    content: "\e314";
+}
+.fa-keyboard_arrow_right:before {
+    content: "\e315";
+}
+.fa-keyboard_arrow_up:before {
+    content: "\e316";
+}
+.fa-local_cafe:before {
+    content: "\e541";
+}
+.fa-local_offer:before {
+    content: "\e54e";
+}
+.fa-local_post_office:before {
+    content: "\e554";
+}
+.fa-keyboard_control:before {
+    content: "\e5d3";
+}
+.fa-more_vert:before {
+    content: "\e5d4";
+}
+.fa-refresh:before {
+    content: "\e5d5";
+}
+.fa-touch_app:before {
+    content: "\e913";
+}
+.fa-star:before {
+    content: "\f005";
+}
+.fa-star-o:before {
+    content: "\f006";
+}
 .fa-signal:before {
     content: "\f012";
 }
 .fa-cog:before {
-    content: "\f013";
-}
-.fa-gear:before {
     content: "\f013";
 }
 .fa-home:before {
@@ -170,12 +173,6 @@
 }
 .fa-flag2:before {
     content: "\f024";
-}
-.fa-star:before {
-    content: "\f005";
-}
-.fa-star-o:before {
-    content: "\f006";
 }
 .fa-twitter:before {
     content: "\f099";
@@ -225,8 +222,8 @@
 .fa-wechat:before {
     content: "\f1d7";
 }
-.fa-weixin:before {
-    content: "\f1d7";
+.fa-print:before {
+    content: "\e8ad";
 }
 
 .fa-spin{

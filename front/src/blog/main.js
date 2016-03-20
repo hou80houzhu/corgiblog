@@ -555,6 +555,95 @@ Module({
         });
     }
 });
+Module({
+    name: "resume",
+    extend: "view",
+    className: "resume",
+    template: module.getTemplate("@tmp", "resume"),
+    init: function () {
+        this.render();
+        this.getContent();
+    },
+    find_content: function (dom) {
+        var ths = this;
+        var t = function () {
+            var t = $("body").scrollTop();
+            if (t > $(window).height()) {
+                ths.dom.addClass("show");
+            } else {
+                ths.dom.removeClass("show");
+            }
+        };
+        $(window).bind("scroll", t);
+        this.onunload = function () {
+            $(window).unbind("scroll", t);
+        };
+    },
+    find_icon: function (dom) {
+        var ths = this;
+        dom.click(function () {
+            var q = $(this);
+            ths.finders("icon").each(function () {
+                if (q.get(0) === $(this).get(0)) {
+                    q.parent().toggleClass("hover");
+                } else {
+                    $(this).parent().removeClass("hover");
+                }
+            });
+        });
+    },
+    find_go: function (dom) {
+        var ths = this;
+        dom.click(function () {
+            var index = $(this).index();
+            $("body").scrollingTop(ths.dom.find("h2").eq(index).get(0).offsetTop - 50);
+        });
+    },
+    find_print: function (dom) {
+        dom.click(function () {
+            if ($("#printiframe").length === 0) {
+                $("<iframe id='printiframe' src='" + basePath + "download/resume.html' style='position:absolute;left:-10000px;top:-10000px;'></iframe>").bind("load", function () {
+                    $(this).get(0).contentWindow.print();
+                }).appendTo("body");
+            } else {
+                $("#printiframe").get(0).contentWindow.print();
+            }
+        });
+    },
+    find_download: function (dom) {
+        dom.click(function () {
+            var type = $(this).attr("type");
+            if ($("#downloadresume").length === 0) {
+                $("a").attr({
+                    id: "downloadresume",
+                    download: "wangjlresume." + type,
+                    href: basePath + "download/resume." + type,
+                    target: "_blank"
+                }).appendTo("body");
+            } else {
+                $("#downloadresume").attr({
+                    id: "downloadresume",
+                    download: "wangjlresume." + type,
+                    href: basePath + "download/resume." + type,
+                    target: "_blank"
+                });
+            }
+            setTimeout(function () {
+                $("#downloadresume").trigger("click");
+            }, 0);
+        });
+    },
+    getContent: function () {
+        var ths = this;
+        $.loader().text(basePath + "download/resume.html", function (data) {
+            var n = data.match(/<body>[\S\s]*?<\/body>/);
+            if (n) {
+                data = "<div class='content-p-code'>" + n[0].substring(6, n[0].length - 7) + "</div>";
+            }
+            ths.finders("content").html(data);
+        });
+    }
+});
 
 Module({
     name: "noadminhead",

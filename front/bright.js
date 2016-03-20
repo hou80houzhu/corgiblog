@@ -3500,6 +3500,17 @@
             });
             return this;
         },
+        html: function (url, success, error, data) {
+            bright.ajax({
+                url: url,
+                data: data,
+                dataType: "text",
+                success: success,
+                type: "get",
+                error: error
+            });
+            return this;
+        },
         json: function (url, success, error, data) {
             bright.ajax({
                 url: url,
@@ -3807,6 +3818,7 @@
                     a.set(packetis, baseMapping.sourceMapping[type][packetis], path).save();
                 }
             }
+            console.log(type);
             loader[type](filepersistence.getStaticPath(type, packetis), function (e) {
                 fn && fn(e);
             });

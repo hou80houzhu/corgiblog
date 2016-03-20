@@ -48,6 +48,7 @@ Module({
     "/login": function () {},
     "/admin": function () {},
     "/about": function () {},
+    "/resume": function () {},
     "/admin/article": function () {},
     "/admin/addarticle": function () {},
     "/admin/editarticle": function () {},
