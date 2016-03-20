@@ -1,6 +1,6 @@
 {
    "id": "BLOG",
-   "build": "000021",
+   "build": "000022",
    "pathPrefix": "<%=request.getHttpPath();%>front/",
    "updatePage": {
       "type": 1,
