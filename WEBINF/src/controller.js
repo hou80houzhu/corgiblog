@@ -206,5 +206,35 @@ Module({
         }.bind(this)).fail(function () {
             done(this.error());
         }.bind(this));
+    },
+    "/mail": function (done) {
+        var addr = this.request.getParameter("email"), ths = this;
+        if (addr && /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(addr)) {
+            var email = require("/emailjs/email");
+            var server = email.server.connect({
+                user: "398414000@qq.com",
+                password: "xhbbqebxgxrjbheb",
+                host: "smtp.qq.com",
+                ssl: true
+            });
+            server.send({
+                from: "hou80houzhu<398414000@qq.com>",
+                to: addr,
+                text: "王金良-简历-2016,请查看附件。OPS:请尽量不要使用chrome dev版本浏览器直接浏览pdf文件不然会有内容不清晰 :)",
+                subject: "王金良-简历-2016",
+                attachment: [
+                    {path: ths.getProjectInfo().getProjectPath() + "download/resume.pdf", type: "application/pdf", name: "王金良-简历-2016.pdf"}
+                ]
+            }, function (err, message) {
+                console.log(err);
+                if (err) {
+                    done(ths.error());
+                } else {
+                    done(ths.success());
+                }
+            });
+        } else {
+            done(this.error("email address is wrong."));
+        }
     }
 });

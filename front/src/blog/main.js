@@ -633,6 +633,42 @@ Module({
             }, 0);
         });
     },
+    find_mail:function(dom){
+        var ths=this;
+        dom.click(function(){
+            ths.popup();
+        });
+    },
+    popup:function(){
+        var bg=$($.template(module.getTemplate("@tmp","resumepopup")).render()).appendTo("body"),ths=this;
+        bg.find("input").get(0).focus();
+        bg.find(".close").click(function(){
+            bg.remove();
+        });
+        bg.find(".sent").click(function(){
+            var e=$(this).parent(2).find("input").val(),thss=$(this);
+            if(e&&/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/.test(e)){
+                thss.html("<i class='fa fa-repeat fa-spin'></i>");
+                ths.postRequest(basePath+"bas/mail",{
+                    email:e
+                }).data(function(){
+                    thss.html("<i class='fa fa-circle-check'></i>");
+                    thss.parent(2).find(".resume-input-tip").html("email has been sent successfully");
+                    setTimeout(function(){
+                        bg.remove();
+                    },2000);
+                }).bad(function(){
+                    thss.parent(2).find(".resume-input-tip").html("send error,try again");
+                    thss.html("send");
+                }).error(function(){
+                    thss.parent(2).find(".resume-input-tip").html("send error,try again");
+                    thss.html("send");
+                });
+            }else{
+                thss.parent(2).find(".resume-input-tip").html("email address is empty or error");
+            }
+        });
+    },
     getContent: function () {
         var ths = this;
         $.loader().text(basePath + "download/resume.html", function (data) {
