@@ -13,7 +13,7 @@ Option({
         override: {
             onendinit: function () {
                 this.getChildAt(0).setContent({
-                    title: "my resume",
+                    title: "王金良的简历",
                     time: "1458446592948"
                 });
             }
