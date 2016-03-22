@@ -1000,9 +1000,9 @@ p {
         position: absolute;
         right: 17px;
         bottom: 100%; }
-    .resume .resume-bar .resume-bar-list.hover .resume-bar-list-icon {
+    .resume .resume-bar .resume-bar-list.hover .resume-bar-list-icon, .resume .resume-bar .resume-bar-list:hover .resume-bar-list-icon, .resume .resume-bar .resume-bar-list:active .resume-bar-list-icon {
       background: white; }
-    .resume .resume-bar .resume-bar-list.hover .resume-bar-list-items {
+    .resume .resume-bar .resume-bar-list.hover .resume-bar-list-items, .resume .resume-bar .resume-bar-list:hover .resume-bar-list-items, .resume .resume-bar .resume-bar-list:active .resume-bar-list-items {
       display: block; }
   .resume .resume-bar .resume-bar-print {
     display: inline-block;

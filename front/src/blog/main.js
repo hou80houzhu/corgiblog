@@ -581,16 +581,16 @@ Module({
     },
     find_icon: function (dom) {
         var ths = this;
-        dom.click(function () {
-            var q = $(this);
-            ths.finders("icon").each(function () {
-                if (q.get(0) === $(this).get(0)) {
-                    q.parent().toggleClass("hover");
-                } else {
-                    $(this).parent().removeClass("hover");
-                }
-            });
-        });
+//        dom.click(function () {
+//            var q = $(this);
+//            ths.finders("icon").each(function () {
+//                if (q.get(0) === $(this).get(0)) {
+//                    q.parent().toggleClass("hover");
+//                } else {
+//                    $(this).parent().removeClass("hover");
+//                }
+//            });
+//        });
     },
     find_go: function (dom) {
         var ths = this;
