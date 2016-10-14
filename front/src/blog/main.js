@@ -8,10 +8,12 @@
  * @css blog.style.style;
  * @json data.pagemapping;
  */
-bright.overrideRequest({
+var basePath=window.basePath;
+
+$.overrideRequest({
     doRequest: function (option, reqeustState) {
         var ths = this;
-        bright.ajax(option).done(function (a) {
+        $.ajax(option).done(function (a) {
             if (a.code && a.code === "1") {
                 reqeustState._data && reqeustState._data.call(ths, a.data);
             } else if (a.code && a.code === "2") {
@@ -182,7 +184,7 @@ Module({
                 this.postRequest(this.option.url, {
                     from: from,
                     size: end
-                }, {cache: true}).data(function (data) {
+                }, {cache: true}).done(function (data) {
                     this.current = this.current + 1;
                     $.template(module.getTemplate("@tmp", "listitem")).renderAppendTo(this.finders("container"), data);
                     this.delegate();
@@ -191,9 +193,7 @@ Module({
                         this.isend = true;
                         this.finders("loading").hide();
                     }
-                }).bad(function () {
-                    this.finders("loading").hide();
-                }).error(function () {
+                }).fail(function () {
                     this.finders("loading").hide();
                 });
             }

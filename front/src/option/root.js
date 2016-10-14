@@ -9,7 +9,7 @@ Option({
             this.addChild({
                 type:"@main.pagecontainer",
                 option:{
-                    url:basePath
+                    url:window.basePath
                 }
             });
         }
