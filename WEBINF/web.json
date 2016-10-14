@@ -9,18 +9,18 @@
         "max": 20971520
     },
     "service": [
+        {"name":"daoservice","option":{
+            "host": "localhost",
+            "port":"3306",
+            "debug":false,
+            "database":"blog",
+            "user": "root",
+            "password": "",
+            "connectionLimit ": "200"
+        }},
         {
             "name": "mvcservice",
             "option": {
-                "database": {
-                    "host": "localhost",
-                    "port": "3306",
-                    "debug": false,
-                    "database": "blog",
-                    "user": "root",
-                    "password": "521616",
-                    "connectionLimit ": "200"
-                },
                 "view": {
                     "path": "front/src",
                     "suffix": "html"
